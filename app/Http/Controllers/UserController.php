@@ -13,8 +13,6 @@ class UserController extends Controller
     {
         $this->middleware('admin');
     }
-
-    
     
     public function index(){
         $batas = 5;
