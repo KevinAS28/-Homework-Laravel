@@ -65,7 +65,6 @@ use App\Models\Buku;
             style="width: 30%; display: inline; margin-top: 10px; margin-bottom: 10px; margin-left: 35%; float: left;" />
     </form> --}}
 
-
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">

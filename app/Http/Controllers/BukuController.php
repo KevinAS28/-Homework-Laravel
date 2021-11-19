@@ -98,4 +98,17 @@ class BukuController extends Controller
 	    return redirect('/buku')->with('pesan', 'Data buku berhasil diedit');
     }
 
+    public function photos(){
+        return $this->hasMany('App\Models\Buku', 'id_buku', 'id');
+    }
+
+    public function gallery(){
+        $all_buku = Buku::orderBy('id', 'desc')->paginate(3);
+        return view('buku/buku_gallery', compact('all_buku'));
+    }
+
+    public function galbuku($title){
+        $buku = Buku::where('buku_seo', $title)->first();
+        return view('buku/detail_buku', compact('buku'));
+    }
 }

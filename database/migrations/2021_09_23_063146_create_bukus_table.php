@@ -19,6 +19,8 @@ class CreateBukusTable extends Migration
             $table->string('penulis');
             $table->integer('harga');
             $table->date('tgl_terbit');
+            $table->string('buku_seo');
+            $table->string('foto');
             $table->timestamps();
         });
     }

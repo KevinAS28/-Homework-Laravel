@@ -143,3 +143,9 @@ Route::post('/galeri', 'App\Http\Controllers\GaleriController@store')->name('gal
 Route::get('/galeri/edit/{id}', 'App\Http\Controllers\GaleriController@edit')->name('galeri.edit');
 Route::post('/galeri/update', 'App\Http\Controllers\GaleriController@update')->name('galeri.update');
 Route::post('/galeri/delete/{id}', 'App\Http\Controllers\GaleriController@destroy')->name('galeri.destroy'); 
+
+/*
+week 9
+*/
+Route::get('/buku/gallery', 'App\Http\Controllers\BukuController@gallery')->name('buku.gallery');
+Route::get('/buku/detail-buku/{title}', 'App\Http\Controllers\BukuController@galbuku')->name('galeri.buku');
