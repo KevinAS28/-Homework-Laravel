@@ -131,3 +131,15 @@ Route::get('/user/delete/{id}', 'App\Http\Controllers\UserController@destroy')->
 Route::get('/user/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('user.edit');
 Route::put('/user/update', 'App\Http\Controllers\UserController@update')->name('user.update');
 Route::get('/user/search', 'App\Http\Controllers\UserController@search')->name('user.search');
+
+
+/*
+week 8
+*/
+
+Route::get('/galeri', 'App\Http\Controllers\GaleriController@index');
+Route::get('/galeri/create', 'App\Http\Controllers\GaleriController@create')->name('galeri.create');
+Route::post('/galeri', 'App\Http\Controllers\GaleriController@store')->name('galeri.store');
+Route::get('/galeri/edit/{id}', 'App\Http\Controllers\GaleriController@edit')->name('galeri.edit');
+Route::post('/galeri/update', 'App\Http\Controllers\GaleriController@update')->name('galeri.update');
+Route::post('/galeri/delete/{id}', 'App\Http\Controllers\GaleriController@destroy')->name('galeri.destroy'); 

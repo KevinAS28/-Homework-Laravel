@@ -7,6 +7,7 @@
 
     @if(Auth::check() && Auth::user()->level=='admin')
         <a href="/user">User</a>
+        <a href="/galeri">Galeri</a>
     @endif
 
     @if(Auth::check())
