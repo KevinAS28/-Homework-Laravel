@@ -61,11 +61,17 @@ class BukuController extends Controller
             ]
         );
 
+        $matches = array();
+        preg_match('[a-z|A-Z|0-9|-]', str_replace(' ', '-', $request->input('judul')), $matches);
+
         $buku = new Buku([
             'judul' => $request->input('judul'),
             'penulis' => $request->input('penulis'),
             'harga' => $request->input('harga'),
-            'tgl_terbit' => $request -> input('tgl_terbit')
+            'tgl_terbit' => $request -> input('tgl_terbit'),
+            'buku_seo' => $matches[0],
+            'foto' => 'unavailble',
+            'love' => 0
 
         ]);
 
