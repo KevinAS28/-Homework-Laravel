@@ -57,7 +57,7 @@
                             Tanggal terbit: {{$buku->tgl_terbit}}<br/>
                         </p>
 						<h4 class="price">current price: <span>Rp.{{$buku->harga}}</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<p class="vote"> <strong>({{$buku->love}} likes)</strong></p>
 						{{-- <h5 class="sizes">sizes:
 							<span class="size" data-toggle="tooltip" title="small">s</span>
 							<span class="size" data-toggle="tooltip" title="medium">m</span>
@@ -71,12 +71,42 @@
 						</h5> --}}
 						<div class="action">
 							<button class="add-to-cart btn btn-default" type="button">Beli</button>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+							<a href="{{ route('buku.love', ['id' => $buku->id]) }}">
+								<button class="like btn btn-default" type="button"><span
+										class="fa fa-heart"></span></button></a>
 						</div>
+						<br/><br/>
+						<form action="{{route('buku.post_comment')}}" method="post">
+							@csrf
+							<textarea name="comment" id="" cols="40" rows="3"></textarea>
+							<input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+							<input type="hidden" name="buku_id" value="{{$buku->id}}"/>
+							<br>
+							<button type="submit">Komentar</button>
+						</form>
+						<br/><br/>
+						<strong class="product-description">Comments: </strong><br/>
+						<table>
+							@foreach ($user_comments as $uc)
+								<tr>
+									<td width="150px">{{$uc['user']}}</td>
+									<td width="150px">{{$uc['comment']}}</td>
+									<td width="150px">{{$uc['updated']}}</td>
+								</tr>	
+							@endforeach
+							{{-- <b>{{$buku_id}}-{{print_r($user_comments)}}</b> --}}
+							
+
+						</table>
 					</div>
 				</div>
+				
 			</div>
+			
 		</div>
+
 	</div>
+
+	
   </body>
 </html>

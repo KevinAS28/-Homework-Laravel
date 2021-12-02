@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Buku;
-
+use App\Models\User;
+use App\Models\BukuComment;
+use Illuminate\Support\Facades\Redirect;
 
 
 class BukuController extends Controller
@@ -109,6 +111,20 @@ class BukuController extends Controller
 
     public function galbuku($title){
         $buku = Buku::where('buku_seo', $title)->first();
-        return view('buku/detail_buku', compact('buku'));
+        $buku_id = (int)$buku->id;
+        $comments = DB::table('buku_comment')->orderBy('updated_at', 'desc')->where('buku_id',$buku_id)->get();
+        $user_comments = [];
+        foreach ($comments as $com) {
+            array_push($user_comments, ['comment'=>$com->comment, 'user'=>User::find($com->user_id)->name, 'updated'=>$com->updated_at]);
+        }
+        return view('buku/detail_buku', compact('buku', 'user_comments', 'buku_id', 'comments'));
+    }
+
+    public function loveBuku(Request $request, $id){
+        $buku = Buku::find($id);
+        $buku->love++;
+        $buku->save();
+        return Redirect::back();
+        
     }
 }

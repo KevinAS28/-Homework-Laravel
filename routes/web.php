@@ -149,3 +149,9 @@ week 9
 */
 Route::get('/buku/gallery', 'App\Http\Controllers\BukuController@gallery')->name('buku.gallery');
 Route::get('/buku/detail-buku/{title}', 'App\Http\Controllers\BukuController@galbuku')->name('galeri.buku');
+
+/*
+week 10
+*/
+Route::get('/buku/love/{id}', 'App\Http\Controllers\BukuController@loveBuku')->name('buku.love');
+Route::post('/buku/comment', 'App\Http\Controllers\BukuCommentController@postComment')->name('buku.post_comment');

@@ -21,6 +21,8 @@ class CreateBukusTable extends Migration
             $table->date('tgl_terbit');
             $table->string('buku_seo');
             $table->string('foto');
+            $table->integer('like');
+            $table->string('comment');
             $table->timestamps();
         });
     }
