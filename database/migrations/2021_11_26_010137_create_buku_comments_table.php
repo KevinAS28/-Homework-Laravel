@@ -13,8 +13,10 @@ class CreateBukuCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buku_comments', function (Blueprint $table) {
+        Schema::create('buku_comment', function (Blueprint $table) {
             $table->id();
+            $table->integer('buku_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateBukuCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buku_comments');
+        Schema::dropIfExists('buku_comment');
     }
 }
